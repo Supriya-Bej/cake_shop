@@ -1,0 +1,204 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+/* Remove Scrollbar */
+body::-webkit-scrollbar {
+    display: none;
+}
+
+
+#main {
+    width: 100%;
+    height: 100vh;
+    background-color: red;
+}
+
+nav {
+    position: fixed;
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0vw 5vw;
+}
+
+nav a {
+    font-size: 1vw;
+    text-decoration: none;
+    color: #fff;
+}
+
+.cntr-nav {
+    display: flex;
+    gap: 3vw;
+}
+
+.one {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(150deg, rgb(75, 55, 24), rgb(33, 12, 3));
+}
+
+.one h1 {
+    font-size: 25vw;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+}
+
+#fanta {
+    position: absolute;
+    width: 30%;
+    z-index: 2;
+    transition: all cubic-bezier(0.19, 1, 0.22, 1)0.5s;
+
+}
+
+#slice {
+    position: absolute;
+    top: 10%;
+    left: 32%;
+    width: 15%;
+    z-index: 1;
+    transition: all cubic-bezier(0.19, 1, 0.22, 1)0.5s;
+}
+
+#orange {
+    position: absolute;
+    width: 20%;
+    z-index: 3;
+    top: 55%;
+    right: 30%;
+    transition: all cubic-bezier(0.19, 1, 0.22, 1)0.5s;
+}
+
+#leaf1 {
+    position: absolute;
+    top: 12%;
+    left: 8%;
+    transform: rotate(60deg);
+    width: 15%;
+    transition: all cubic-bezier(0.19, 1, 0.22, 1)0.5s;
+}
+
+#leaf2 {
+    position: absolute;
+    top: 60%;
+    left: 80%;
+    transform: rotate(-90deg);
+    width: 13%;
+    transition: all cubic-bezier(0.19, 1, 0.22, 1)0.5s;
+}
+
+#leaf3 {
+    position: absolute;
+    width: 20%;
+    top: 8%;
+    right: 0%;
+    transition: all cubic-bezier(0.19, 1, 0.22, 1)0.5s;
+
+}
+
+
+.two {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(33, 19, 1);
+}
+
+.lft-two,
+.rght-two {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 5vh;
+    width: 50%;
+    height: 100%;
+}
+
+.lft-two svg {
+    margin-top: 50vh;
+    width: 90%;
+    transform: rotateX(50deg);
+}
+
+.rght-two h1 {
+    color: white;
+    font-size: 5vw;
+}
+
+.rght-two p {
+    color: white;
+    font-size: 1vw;
+    width: 80%;
+}
+
+.three {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    gap: 5vw;
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(33, 19, 1);
+}
+
+.card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2vh;
+    width: 25vw;
+    height: 70vh;
+    margin-top: 10vh;
+    border-radius: 20px;
+}
+
+.card h1 {
+    margin-top: 40vh;
+    font-size: 3vw;
+}
+
+.card button {
+    font-size: 1vw;
+    border-radius: 50px;
+    border: none;
+    background-color: orange;
+    color: white;
+    padding: 1vw 2vw;
+}
+
+#GuaRana {
+    top: -10%;
+    position: absolute;
+    width: 90%;
+}
+
+#cocacola {
+    position: absolute;
+    width: 100%;
+    height: 50vh;
+    top: -10%;
+}
+
+#lemon {
+    position: absolute;
+    top: -20%;
+    width: 20vw;
+}
