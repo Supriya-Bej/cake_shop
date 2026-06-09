@@ -1,4 +1,4 @@
-
+gsap.set("#cake", { width: "26%" });
 
 // Make Timeline
 var tl = gsap.timeline({
@@ -11,28 +11,28 @@ var tl = gsap.timeline({
     }
 })
 
-tl.to("#fanta", {
+tl.to("#cake", {
     width: "25%",
-    top: "116%",
+    top: "128%",
     left: "6%"
 }, 'orange')
 tl.to("#slice", {
     width: "15%",
-    top: "160%",
+    top: "166%",
     left: "23%"
 }, 'orange')
-tl.to("#orange", {
+tl.to("#cherry", {
     width: "15%",
-    top: "160%",
+    top: "168%",
     right: "5%"
 }, 'orange')
 tl.to("#leaf1", {
-    top: "110%",
-    rotate: "130deg",
+    top: "119%",
+    rotate: "380deg",
     left: "81%"
 }, 'orange')
-tl.to("#leaf2", {
-    top: "110%",
+tl.to("#gems", {
+    top: "118%",
     rotate: "130deg",
     left: "0%"
 }, 'orange')
@@ -48,14 +48,8 @@ var tl2 = gsap.timeline({
         // markers: true
     }
 })
-
-tl2.to("#slice", {
-    left: "40%",
-    width: "20%",
-    top: "200%"
-}, 'orange')
-tl2.to("#fanta", {
-    left: "38%",
+tl2.to("#cake", {
+    left: "37%",
     width: "25%",
     top: "210%"
 }, 'orange')
