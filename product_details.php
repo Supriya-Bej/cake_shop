@@ -74,8 +74,9 @@ if (isset($_GET['id'])) {
             font-size: 35px;
             font-weight: 700;
         }
-
+        
         .product-card {
+            position: relative;
             border: 2px solid #ff4f81;
             border-radius: 15px;
             overflow: hidden;
@@ -95,7 +96,7 @@ if (isset($_GET['id'])) {
             /* font-size: 30px; */
             font-weight: 700;
         }
-        
+
         .review-slider {
             display: flex;
             gap: 15px;
@@ -237,7 +238,6 @@ if (isset($_GET['id'])) {
     <div class="container py-5">
 
         <div class="product-card">
-
             <div class="row g-5">
 
                 <!-- IMAGE -->
@@ -258,29 +258,40 @@ if (isset($_GET['id'])) {
                         <?php echo $product['name']; ?>
                     </h2>
 
-                    <!-- RATING -->
-                    <div class="rating mb-3">
+                    <div class="justify-content-between">
+                        <!-- RATING -->
+                        <div class="rating mb-3">
 
-                        <?php
-                        for ($i = 1; $i <= 5; $i++) {
+                            <?php
+                            for ($i = 1; $i <= 5; $i++) {
 
-                            if ($avg_rating >= $i) {
+                                if ($avg_rating >= $i) {
 
-                                echo '<i class="fa fa-star text-warning"></i>';
-                            } elseif ($avg_rating >= ($i - 0.5)) {
+                                    echo '<i class="fa fa-star text-warning"></i>';
+                                } elseif ($avg_rating >= ($i - 0.5)) {
 
-                                echo '<i class="fa fa-star-half-alt text-warning"></i>';
-                            } else {
+                                    echo '<i class="fa fa-star-half-alt text-warning"></i>';
+                                } else {
 
-                                echo '<i class="fa fa-star text-secondary"></i>';
+                                    echo '<i class="fa fa-star text-secondary"></i>';
+                                }
                             }
-                        }
-                        ?>
+                            ?>
 
-                        <span class="ms-2 text-muted">
-                            <?php echo number_format($avg_rating, 1); ?>
+                            <span class="ms-2 text-muted">
+                                <?php echo number_format($avg_rating, 1); ?>
+                            </span>
+
+                        </div>
+
+                        <!-- Wishlist -->
+                        <span class="wishlist">
+                            <button type="button" class="border-0 loveBtn bg-light 
+                            <?php echo !empty($product['wish_pid']) ? 'wishBtn' : ''; ?>"
+                                onclick="toggleWishlist(this, <?php echo $product['id']; ?>)">
+                                <i class="fa fa-heart"></i>
+                            </button>
                         </span>
-
                     </div>
 
                     <p class="text-muted">
