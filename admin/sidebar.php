@@ -31,7 +31,7 @@ $run = mysqli_query($conn, $sql);
             padding: 25px 18px;
             min-height: 100vh;
             box-shadow: 4px 0 20px rgba(0, 0, 0, 0.08);
-            /* position: relative; */
+            
         }
 
 

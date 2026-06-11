@@ -30,6 +30,25 @@ $cartCount = mysqli_fetch_assoc($run);
         z-index: 1000;
     }
 
+    /* Search Option */
+    .mobile-search {
+        flex: 1;
+        max-width: 220px;
+    }
+
+    .mobile-search input {
+        border-radius: 20px;
+        border: none;
+        font-size: 14px;
+        height: 38px;
+    }
+
+    @media(min-width:992px) {
+        .mobile-search {
+            display: none;
+        }
+    }
+
     /* =========================
    LOGO ========================= */
     .navbar-logo {
@@ -119,14 +138,40 @@ $cartCount = mysqli_fetch_assoc($run);
 <!-- Nav-Bar -->
 <nav class="navbar navbar-expand-lg navbar-dark d-flex fixed-top">
     <div class="container-fluid px-5">
-        <a href="index.php" class="navbar-brand">
+        <div class="d-flex d-lg-none align-items-center justify-content-between w-100">
+
+            <!-- Logo -->
+            <a href="index.php" class="navbar-brand m-0">
+                <img src="Assests/image/Cake/logo2.png" class="navbar-logo" alt="Sugar Bliss Logo">
+            </a>
+
+            <!-- Search Box -->
+            <form action="product.php" method="GET" class="mobile-search mx-2">
+
+                <input type="text"
+                    name="search"
+                    class="form-control form-control-sm"
+                    placeholder="Search cakes..."
+                    value="<?php echo $_GET['search'] ?? ''; ?>">
+
+            </form>
+
+            <!-- Toggle -->
+            <button class="navbar-toggler shadow-none border-0"
+                type="button"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasNavbar">
+
+                <span class="navbar-toggler-icon"></span>
+
+            </button>
+
+        </div>
+
+        <!-- Desktop Logo -->
+        <a href="index.php" class="navbar-brand d-none d-lg-block">
             <img src="Assests/image/Cake/logo2.png" class="navbar-logo" alt="Sugar Bliss Logo">
         </a>
-        <!-- Toggol Button -->
-        <button class="navbar-toggler shadow-none border-0" type="button" data-bs-toggle="offcanvas"
-            data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
 
         <div class="sidebar   offcanvas offcanvas-end " tabindex="-1" id="offcanvasNavbar"
             aria-labelledby="offcanvasNavbarLabel">

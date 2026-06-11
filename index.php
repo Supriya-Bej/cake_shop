@@ -53,7 +53,6 @@ $total_users = countDetails('users');
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
     <link rel="stylesheet" href="Assests/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
-    <!-- <link rel="stylesheet" href="header.css"> -->
     <link rel="stylesheet" href="media.css">
 
     <!--OWL Carousel -->
@@ -66,8 +65,17 @@ $total_users = countDetails('users');
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Document</title>
     <style>
+        @media (max-width: 1029px) {
+
+            .two,
+            .three,
+            .one {
+                display: none;
+            }
+        }
+
         #cake1 {
-            top: -47%;
+            top: -74%;
             position: absolute;
             width: 100%;
         }
@@ -75,7 +83,7 @@ $total_users = countDetails('users');
         #cake3 {
             position: absolute;
             width: 100%;
-            top: -17%;
+            top: -42%;
         }
 
         .loveBtn {
@@ -111,7 +119,7 @@ $total_users = countDetails('users');
 
         /* Customer Review */
         .customer_reviews {
-            padding: 80px 0;
+            padding: 20px 0;
             background: linear-gradient(135deg, #fff5f7, #fff);
         }
 
@@ -340,6 +348,12 @@ $total_users = countDetails('users');
         }
 
         /* ================= FOOTER ================= */
+        .footer-logo {
+            width: 88px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
 
         .custom_footer {
             background: linear-gradient(135deg, #ff4f81, #ff7eb3, #ffb6c1);
@@ -369,17 +383,6 @@ $total_users = countDetails('users');
             height: 300px;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
-        }
-
-        /* logo */
-        .footer_logo {
-            font-size: 2.2rem;
-            font-weight: 700;
-            color: white;
-        }
-
-        .footer_logo span {
-            color: #e4b311;
         }
 
         /* paragraph */
@@ -479,11 +482,6 @@ $total_users = countDetails('users');
             letter-spacing: 1px;
         }
 
-        .footer_bottom span {
-            color: #f5c936;
-            font-weight: 600;
-        }
-
         /* Responsive */
         @media(max-width:991px) {
 
@@ -538,6 +536,30 @@ $total_users = countDetails('users');
 </head>
 
 <body style="overflow-x: hidden;">
+
+    <!-- Hero section for Mobile devices -->
+    <div id="carouselExampleAutoplaying" class="carousel slide d-block d-lg-none" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="Assests/image/Cake/banner_slider.jpg" class="d-block w-100" alt="...">
+
+            </div>
+            <div class="carousel-item">
+                <img src="Assests/image/Cake/banner_slider2.jpg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="Assests/image/Cake/banner_slider3.jpg" class="d-block w-100" alt="...">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
 
     <!-- Hero Section -->
     <div id="main">
@@ -648,7 +670,7 @@ $total_users = countDetails('users');
                                         </button>
                                     <?php } else { ?>
                                         <a href="signup.php">
-                                            <button style=" position:absolute;top:15px;left:58vh;width:45px;height:45px;
+                                            <button style=" position:absolute;top:15px;left:55vh;width:45px;height:45px;
                                             border:none;border-radius:50%; background:white;font-size:18px;
                                             box-shadow:0 5px 15px rgba(0,0,0,0.08);"
                                                 class="loveBtn <?php echo !empty($value['wish_pid']) ? 'wishBtn' : ''; ?>"
@@ -854,31 +876,85 @@ $total_users = countDetails('users');
 
     <!-- Offer Section -->
     <section class="offer_section my-5 container">
-        <div class="offer_section_main d-flex w-100 gap-5">
 
-            <div class="offer_left d-flex lg:w-50 w-100 rounded">
-                <div class="left w-50 px-4 d-flex flex-column align-items-center justify-content-center">
-                    <h1 class="">15%<span class="fw-medium fs-3"> OFF</span></h1>
-                    <p class="fw-medium">Order online our exclusive line of cake & get 15% off</p>
-                    <h4>CODE: CAKE15</h4>
+        <div class="row g-4">
+
+            <!-- Offer Card 1 -->
+            <div class="col-lg-6">
+
+                <div class="offer-card offer-pink">
+
+                    <div class="offer-content">
+
+                        <span class="offer-tag">
+                            Birthday Special 🎉
+                        </span>
+
+                        <h2>15% OFF</h2>
+
+                        <p>
+                            Make every celebration sweeter with our handcrafted cakes.
+                        </p>
+
+                        <div class="coupon-box">
+                            CODE: CAKE15
+                        </div>
+
+                        <a href="product.php" class="offer-btn">
+                            Order Now
+                        </a>
+
+                    </div>
+
+                    <div class="offer-image">
+
+                        <img src="Assests/image/Cake/cake-N-2-removebg-preview.png" alt="Cake">
+
+                    </div>
+
                 </div>
-                <div class="right w-50">
-                    <img src="Assests/image/Cake/about.jpg" class="img-fluid rounded" alt="">
-                </div>
+
             </div>
 
+            <!-- Offer Card 2 -->
+            <div class="col-lg-6">
 
-            <div class="offer_right d-flex lg:w-50 w-100 rounded">
-                <div class="left w-50 d-flex flex-column align-items-center justify-content-center px-4">
-                    <h1>10%<span class="fw-medium fs-3"> OFF</span></h1>
-                    <p class="fw-medium">Order online our use the below code get 15% off</p>
-                    <h4>CODE: CAKE15</h4>
+                <div class="offer-card offer-dark">
+
+                    <div class="offer-content">
+
+                        <span class="offer-tag">
+                            Weekend Delight 🍰
+                        </span>
+
+                        <h2>10% OFF</h2>
+
+                        <p>
+                            Treat yourself and your loved ones with premium cakes.
+                        </p>
+
+                        <div class="coupon-box">
+                            CODE: SWEET10
+                        </div>
+
+                        <a href="product.php" class="offer-btn">
+                            Shop Now
+                        </a>
+
+                    </div>
+
+                    <div class="offer-image">
+
+                        <img src="Assests/image/Cake/NutellaCheesecakeTub-removebg-preview.png" alt="Cake">
+
+                    </div>
+
                 </div>
-                <div class="w-50">
-                    <img src="Assests/image/Cake/about.jpg" class="img-fluid rounded" alt="">
-                </div>
+
             </div>
+
         </div>
+
     </section>
 
     <!-- Customer Reviews -->
@@ -1083,9 +1159,10 @@ $total_users = countDetails('users');
 
                 <!-- Brand Content -->
                 <div class="col-lg-4 col-md-6">
-                    <h2 class="footer_logo">
-                        John<span>Cake</span>
-                    </h2>
+
+                    <a href="index.php" class="navbar-brand m-0">
+                        <img src="Assests/image/Cake/logo2.png" class="footer-logo" alt="Sugar Bliss Logo">
+                    </a>
 
                     <p class="footer_text mt-3">
                         Bringing sweetness to every celebration with freshly baked cakes,
@@ -1171,7 +1248,7 @@ $total_users = countDetails('users');
             <div class="footer_bottom text-center mt-5 pt-4">
                 <p>
                     © 2026 All Rights Reserved | Designed By
-                    <span>Supriya Bej</span>
+                    <span class="fw-semibold">Supriya Bej</span>
                 </p>
             </div>
 

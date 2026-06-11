@@ -179,7 +179,7 @@ $run = mysqli_query($conn, $method);
                         <?php } ?>
 
                         <div class="col-md-6 form-group">
-                            <input type="date" name="date" required>
+                            <input type="date" name="date" min="<?php echo date('Y-m-d'); ?>" required>
                         </div>
 
                         <div class="col-12 form-group">
@@ -208,11 +208,7 @@ $run = mysqli_query($conn, $method);
                         </div>
 
                         <!-- ONLINE METHODS -->
-                        <!-- <div id="onlineMethods" style="display:none;">
-                            <label><input type="radio" name="payment_method" value="UPI"> UPI</label><br>
-                            <label><input type="radio" name="method" value="Card"> Card</label><br>
-                            <label><input type="radio" name="method" value="Net Banking"> Net Banking</label>
-                        </div> -->
+
                         <!-- PAYMENT METHODS -->
                         <div id="onlineMethods" class="mt-3" style="display:none;">
 
@@ -368,22 +364,9 @@ $run = mysqli_query($conn, $method);
                 const data = await res.text();
 
                 if (data == "success") {
-
-                    document.getElementById("notify_msg").innerHTML = `
-
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-
-                        <strong>Success!</strong> Order successful.
-
-                        <button type="button"
-                            class="btn-close"
-                            data-bs-dismiss="alert">
-                        </button>
-                    </div>`;
-
                     setTimeout(() => {
-                        window.location.href = "product.php";
-                    }, 2000);
+                        window.location.href = "order_success.php";
+                    }, 1500);
 
                 } else if (data == "error") {
 
@@ -482,8 +465,8 @@ $run = mysqli_query($conn, $method);
                 // Transaction success
                 handler: function(response) {
                     console.log(response);
-                    alert("Payment Successful");
                     document.querySelector(".btn-order").click();
+
                 }
             };
 

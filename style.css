@@ -23,7 +23,6 @@ body::-webkit-scrollbar {
     /* background-color: red; */
 }
 
-
 .one {
     display: flex;
     align-items: center;
@@ -68,9 +67,9 @@ body::-webkit-scrollbar {
 
 #leaf1 {
     position: absolute;
-    top: 7%;
+    top: 6%;
     z-index: 0;
-    left: 20%;
+    left: 18%;
     transform: rotate(370deg);
     width: 15%;
     transition: all cubic-bezier(0.19, 1, 0.22, 1)0.5s;
@@ -157,8 +156,8 @@ body::-webkit-scrollbar {
     justify-content: center;
     flex-direction: column;
     gap: 2vh;
-    width: 25vw;
-    height: 50vh;
+    width: 29vw;
+    height: 58vh;
     margin-top: 10vh;
     border-radius: 20px;
 }
@@ -169,69 +168,111 @@ body::-webkit-scrollbar {
 }
 
 
-
-/* Customer Review */
-.customer_review {
-    position: relative;
-    width: 100%;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #a3572a;
-    overflow: hidden;
-}
-
-.swiper-container {
-    width: 100%;
-    padding-top: 50px;
-    padding-bottom: 50px;
-}
-
-.swiper-slides {
-    background-position: center;
-    background-size: cover;
-    width: 300px;
-    height: 300px;
-}
-
-
 /* Offer Section */
-.offer_section .offer_left {
-    background-color: #6b6b6b;
+.offer-card {
+    position: relative;
+    overflow: hidden;
+    height: 320px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px;
+    transition: .4s;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, .08);
 }
 
-.offer_section .offer_right {
-    background-color: wheat;
+.offer-card:hover {
+    transform: translateY(-8px);
 }
 
-.offer_left,
-.offer_right .left {
-    font-family: 'Times New Roman', Times, serif;
-    text-align: center;
-    color: #300101;
+.offer-pink {
+    background: linear-gradient(135deg,
+            rgb(250, 217, 225),
+            rgb(114, 75, 87));
+
+    color: white;
 }
 
-.offer_left h1 {
-    font-size: 8vh;
-    font-weight: 500;
+.offer-dark {
+    background: linear-gradient(135deg,
+            #6fa4a8,
+            #dbf3f4);
+
+    color: white;
 }
 
-.offer_right h1 {
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 8vh;
-    font-weight: 500;
+
+.offer-content {
+    width: 55%;
+    z-index: 2;
 }
 
-/* Customer Reviews */
-.customer_reviews .customer_img img {
-    max-width: 80px;
-    width: 80px;
-    height: 80px;
+.offer-tag {
+    display: inline-block;
+
+    background: rgba(255, 255, 255, .2);
+
+    padding: 8px 15px;
+
+    border-radius: 30px;
+
+    font-size: 13px;
+}
+
+.offer-content h2 {
+    font-size: 3rem;
+    font-weight: 800;
+
+    margin: 15px 0;
+}
+
+.offer-content p {
+    opacity: .9;
+}
+
+.coupon-box {
+    display: inline-block;
+
+    margin: 15px 0;
+
+    padding: 10px 18px;
+
+    border: 2px dashed white;
+
+    border-radius: 15px;
+
+    font-weight: 700;
+}
+
+.offer-btn {
+    display: inline-block;
+
+    background: white;
+    color: #89022d;
+
+    text-decoration: none;
+
+    padding: 12px 24px;
+
+    border-radius: 30px;
+
+    font-weight: 700;
+}
+
+.offer-image {
+    width: 40%;
+}
+
+.offer-image img {
+    width: 100%;
+    height: 250px;
+
     object-fit: cover;
-    background-size: cover;
-    border-radius: 50%;
+
+    border-radius: 20px;
 }
+
 
 /* ===== UNIQUE FOOTER DESIGN ===== */
 
@@ -506,72 +547,4 @@ body::-webkit-scrollbar {
 .main.active .curved-shape2 {
     transform: rotate(-11deg) skewY(-41deg);
     transition-delay: 1.2s;
-}
-
-/* Conatct Page */
-.contact_section .hero_img {
-    background: url(Assests/image/Cake/background3.avif);
-    background-size: cover;
-    object-fit: contain;
-    background-repeat: no-repeat;
-    width: 100%;
-    height: 50vh;
-    background-position: 30%;
-    margin-top: 3vh;
-    color: #300101;
-}
-
-.contact_content {
-    background-color: #c3a9b3;
-    color: #300101;
-    width: 50%;
-    height: auto;
-    gap: 10px;
-}
-
-.contact_right_content {
-    color: #450404;
-}
-
-.contact_right_content .btn {
-    background-color: #300101;
-    color: white;
-}
-
-.contact_right_content .btn:hover {
-    background-color: #520808;
-}
-
-.map iframe {
-    grid-template-columns: 200px 200px;
-    grid-template-rows: 200px 200px;
-    /* gap: 1.5em; */
-    width: 100%;
-    height: 200px;
-}
-
-
-/* About Us */
-.about_us_page .top {
-    background-image: url(Assests/image/Cake/background6.avif);
-    background-size: cover;
-    object-fit: contain;
-    background-repeat: no-repeat;
-    width: 100%;
-    height: 80vh;
-    background-position: 30%;
-    /* margin-top: 3vh; */
-    color: #300101;
-}
-
-.about_us_page .middle_content .left {
-    width: 40%;
-}
-
-.about_us_page .middle_content .right {
-    width: 60%;
-}
-
-.journey .card {
-    width: 25vw;
 }

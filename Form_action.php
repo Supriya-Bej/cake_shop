@@ -1,43 +1,45 @@
 <?php
 include('db_connect.php');
 global $conn;
-
 session_start();
 
 // Signup
 if ($_SERVER['REQUEST_METHOD'] === "POST" && isset($_POST['register'])) {
+
+    include("mail.php");
+
     $name = $_POST['userName'];
     $email = $_POST['Email'];
     $password = $_POST['Password'];
     $image = $_FILES['img']['name'];
     $temp_name = $_FILES['img']['tmp_name'];
     $upload = "image/" . $image;
+
     if (!empty($image)) {
         move_uploaded_file($temp_name, $upload);
     }
 
-
-    $checkEmail = "SELECT * FROM `users` WHERE email='$email'";
+    $checkEmail = "SELECT * FROM users WHERE email='$email'";
     $check = mysqli_query($conn, $checkEmail);
     if (mysqli_num_rows($check) > 0) {
         echo "<script>
-            alert('Email alresy exist');
-            window.location.href='signup.php';
-            </script>";
+                alert('Email already exists');
+                window.location.href='signup.php';
+              </script>";
     } else {
-        $sql = "INSERT INTO `users`( `name`, `email`, `password`, `image`) VALUES ('$name','$email','$password','$image')";
-        $run = mysqli_query($conn, $sql);
-        // $data = mysqli_fetch_assoc($run);
-        if ($run) {
-            $_SESSION['user_id'] = mysqli_insert_id($conn);
-            $_SESSION['user_name'] = $name;
-            $_SESSION['user_email'] = $email;
-            // $_SESSION['user_image'] = $image;
 
-            header("Location:index.php");
+        $otp = rand(100000, 999999);
+        $_SESSION['otp'] = $otp;
+        $_SESSION['temp_name'] = $name;
+        $_SESSION['temp_email'] = $email;
+        $_SESSION['temp_password'] = $password;
+        $_SESSION['temp_image'] = $image;
+
+        if (sendOTP($email, $otp)) {
+            header("Location: verify_otp.php");
             exit();
         } else {
-            "Error:" . mysqli_error($conn);
+            echo "OTP sending failed";
         }
     }
 }
@@ -51,8 +53,18 @@ if ($_SERVER['REQUEST_METHOD'] === "POST" && isset($_POST['login'])) {
     $check = "SELECT * FROM `users` WHERE email='$email'";
     $run = mysqli_query($conn, $check);
 
+
     if (mysqli_num_rows($run) > 0) {
         $data = mysqli_fetch_assoc($run);
+        if ($data['email_verified'] == 0) {
+
+            echo "<script>
+                alert('Please verify your email first');
+                window.location.href='signup.php';
+            </script>";
+
+            exit();
+        }
         if ($data['password'] == $password) {
             $_SESSION['user_id'] = $data['id'];
             $_SESSION['user_name'] = $data['name'];

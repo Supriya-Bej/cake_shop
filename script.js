@@ -28,7 +28,7 @@ tl.to("#cherry", {
 }, 'orange')
 tl.to("#leaf1", {
     top: "119%",
-    rotate: "380deg",
+    rotate: "360deg",
     left: "81%"
 }, 'orange')
 tl.to("#gems", {

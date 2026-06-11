@@ -259,13 +259,6 @@ $result = mysqli_query($conn, $query);
 
             </div>
 
-            <button class="btn btn-light rounded-circle shadow-sm"
-                style="width:45px;height:45px;">
-
-                <i class="fa fa-user"></i>
-
-            </button>
-
         </div>
 
         <!-- CUSTOMER CARD -->

@@ -1,9 +1,10 @@
 @media only screen and (min-width:200px) and (max-width:575px) {
-    .one {
-        /* display: flex;
+
+    /* .one { */
+    /* display: flex;
     align-items: center;
     justify-content: center; */
-        width: 100%;
+    /* width: 100%;
         height: 100vh;
         background: linear-gradient(150deg, rgb(202, 196, 127), rgb(137, 63, 2));
     }
@@ -76,116 +77,59 @@
         left: 0%;
         transition: all cubic-bezier(0.19, 1, 0.22, 1)0.5s;
 
-    }
-
+    } */
     .two,
     .three,
     .one {
         display: none;
     }
 
+    /* Offer */
+    @media (max-width: 991px) {
 
-    /* Brand Story Section */
-    .brand-stats {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
+        .offer-card {
+            height: auto;
+
+            flex-direction: column-reverse;
+
+            text-align: center;
+
+            padding: 25px;
+        }
+
+        .offer-content {
+            width: 100%;
+        }
+
+        .offer-image {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .offer-image img {
+            width: 100%;
+            height: 220px;
+        }
+
+        .offer-content h2 {
+            font-size: 2.2rem;
+        }
     }
 
-    .arc,
-    .float-left,
-    .float-right,
-    .deco-3 {
-        display: none;
+    @media (max-width: 576px) {
+
+        .offer-card {
+            border-radius: 25px;
+        }
+
+        .offer-content h2 {
+            font-size: 1.8rem;
+        }
+
+        .offer-btn {
+            width: 100%;
+        }
     }
-
-    .deco-7 {
-        position: absolute;
-        right: 2%;
-        top: 18%;
-        width: 20%;
-    }
-
-    .deco-4 {
-        left: 2%;
-        top: 18%;
-        width: 22%;
-        max-width: 320px;
-        z-index: 2;
-        transform: rotate(0deg);
-    }
-
-    .deco-5 {
-        position: absolute;
-        left: 45%;
-    }
-
-    .deco-1 {
-        position: absolute;
-        left: 9%;
-        width: 12%;
-    }
-
-    .deco-6 {
-        width: 19%;
-    }
-
-    .deco-8 {
-        position: absolute;
-        top: 47%;
-        left: 60%;
-    }
-
-    /* Product Section */
-    .product_section .row .sectio-title h2 {
-        text-align: center;
-    }
-
-    /* Contact Us Page */
-    .contact_body_part p {
-        font-size: small;
-        font-weight: 100;
-    }
-
-    .contact_us_main {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .contact_content p {
-        font-size: small;
-    }
-
-    .contact_content h4 {
-        font-size: medium;
-    }
-
-
-    /* Offer Section */
-    .offer_section_main {
-        display: flex;
-        flex-direction: column;
-
-    }
-
-    .offer_left h1 {
-        font-size: 5vh;
-        font-weight: 500;
-    }
-
-    .offer_right h1 {
-        font-family: 'Times New Roman', Times, serif;
-        font-size: 5vh;
-        font-weight: 500;
-    }
-
-    /* Footer section */
-    .footer .container {
-        display: flex;
-        flex-direction: column;
-    }
-
 
     /* Sign Up page */
     .main {

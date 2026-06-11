@@ -49,7 +49,7 @@
 
         <div class="info-content Login text-light">
             <h2 class="animation" style="--D:0; --S:20">WELCOME BACK!</h2>
-            <p class="animation" style="--D:1; --S:21">Lorem ipsum dolor sit amet.</p>
+            <!-- <p class="animation" style="--D:1; --S:21">Lorem ipsum dolor sit amet.</p> -->
         </div>
 
         <!-- Register -->
@@ -91,7 +91,7 @@
 
         <div class="info-content Register text-light">
             <h2 class="animation" style="--li:17; --S:0;">WELCOME BACK!</h2>
-            <p class="animation" style="--li:18; --S:1;">Lorem ipsum dolor sit amet.</p>
+            <!-- <p class="animation" style="--li:18; --S:1;">Lorem ipsum dolor sit amet.</p> -->
         </div>
     </div>
 

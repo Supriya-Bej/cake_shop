@@ -82,6 +82,7 @@ if (isset($_GET['id'])) {
             transition: 0.4s;
             background: white;
         }
+
         .product-img {
             height: 220px;
             object-fit: cover;
@@ -94,21 +95,45 @@ if (isset($_GET['id'])) {
             /* font-size: 30px; */
             font-weight: 700;
         }
+        
+        .review-slider {
+            display: flex;
+            gap: 15px;
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding-bottom: 10px;
+            scroll-behavior: smooth;
 
-        .rating i {
-            font-size: 18px;
+            /* Hide scrollbar */
+            scrollbar-width: none;
+            /* Firefox */
+            -ms-overflow-style: none;
+            /* IE & Edge */
+        }
+
+        .review-slider::-webkit-scrollbar {
+            display: none;
+            /* Chrome, Safari, Opera */
         }
 
         .review-card {
+            min-width: 280px;
+            max-width: 280px;
             background: #fff;
-            border-radius: 15px;
-            padding: 18px;
-            border-left: 5px solid #ff4f81;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            margin-bottom: 20px;
+            border-radius: 16px;
+            padding: 15px;
+            border-left: 4px solid #ff4f81;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+            transition: 0.3s;
+            flex-shrink: 0;
+        }
+
+        .review-card:hover {
+            transform: translateY(-5px);
         }
 
         .review-feedback {
+            font-size: 14px;
             color: #555;
         }
 
@@ -155,7 +180,6 @@ if (isset($_GET['id'])) {
 
         .card-text {
             min-height: 50px;
-            /* adjust if needed */
         }
 
         .btn-area {
@@ -333,84 +357,59 @@ if (isset($_GET['id'])) {
                                 </a>
                         <?php }
                         } ?>
-
-
                     </div>
 
                     <!-- REVIEWS -->
                     <div class="mt-5">
 
-                        <div class="d-flex justify-content-between align-items-center mb-4">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
 
-                            <h4 class="fw-bold">
-                                Customer Reviews
-                            </h4>
+                            <h4 class="fw-bold">Customer Reviews</h4>
 
                             <span class="badge bg-danger rounded-pill">
-
-                                <?php echo mysqli_num_rows($feedbackRun); ?>
-                                Reviews
-
+                                <?php echo mysqli_num_rows($feedbackRun); ?> Reviews
                             </span>
 
                         </div>
 
                         <?php if (mysqli_num_rows($feedbackRun) > 0) { ?>
 
-                            <div class="row g-3">
+                            <div class="review-slider">
 
                                 <?php while ($review = mysqli_fetch_assoc($feedbackRun)) { ?>
 
-                                    <div class="col-12">
+                                    <div class="review-card">
 
-                                        <div class="review-card">
+                                        <div class="d-flex justify-content-between mb-2">
 
-                                            <div class="d-flex justify-content-between mb-2">
+                                            <div>
+                                                <h6 class="fw-bold mb-1">
+                                                    <i class="fa fa-user-circle text-danger"></i>
+                                                    <?php echo $review['name']; ?>
+                                                </h6>
 
-                                                <div>
-
-                                                    <h6 class="fw-bold mb-1">
-
-                                                        <i class="fa fa-user-circle text-danger"></i>
-
-                                                        <?php echo $review['name']; ?>
-
-                                                    </h6>
-
-                                                    <small class="text-muted">
-
-                                                        <?php echo date("d M Y", strtotime($review['created_at'])); ?>
-
-                                                    </small>
-
-                                                </div>
-
-                                                <!-- <div>
-
-                                                    <?php
-                                                    for ($i = 1; $i <= 5; $i++) {
-
-                                                        if ($review['rating'] >= $i) {
-
-                                                            echo '<i class="fa fa-star text-warning"></i>';
-                                                        } else {
-
-                                                            echo '<i class="fa fa-star text-secondary"></i>';
-                                                        }
-                                                    }
-                                                    ?>
-
-                                                </div> -->
-
+                                                <small class="text-muted">
+                                                    <?php echo date("d M Y", strtotime($review['created_at'])); ?>
+                                                </small>
                                             </div>
 
-                                            <p class="review-feedback mb-0">
-
-                                                "<?php echo $review['feedback']; ?>"
-
-                                            </p>
+                                            <div class="text-warning">
+                                                <?php
+                                                for ($i = 1; $i <= 5; $i++) {
+                                                    if ($review['rating'] >= $i) {
+                                                        echo '<i class="fa fa-star"></i>';
+                                                    } else {
+                                                        echo '<i class="fa fa-star text-secondary"></i>';
+                                                    }
+                                                }
+                                                ?>
+                                            </div>
 
                                         </div>
+
+                                        <p class="mb-0 review-feedback">
+                                            "<?php echo $review['feedback']; ?>"
+                                        </p>
 
                                     </div>
 
@@ -421,16 +420,12 @@ if (isset($_GET['id'])) {
                         <?php } else { ?>
 
                             <div class="alert alert-light border text-center">
-
                                 No reviews yet
-
                             </div>
 
                         <?php } ?>
 
                     </div>
-                    <!-- <p id="notify_msg" class="z-3 rounded-3 container"></p> -->
-
                 </div>
 
             </div>

@@ -8,6 +8,27 @@ if (isset($_SESSION['admmin_id'])) {
     $sql = "SELECT products.*, categories.name AS category_name 
         FROM products LEFT JOIN categories ON products.category_id = categories.id";
     $result = mysqli_query($conn, $sql);
+
+    // Total Products
+    $totalProducts = mysqli_fetch_assoc(
+        mysqli_query($conn, "SELECT COUNT(*) AS total FROM products")
+    )['total'];
+
+    // In Stock Products
+    $inStock = mysqli_fetch_assoc(
+        mysqli_query($conn, "SELECT COUNT(*) AS total FROM products WHERE stock > 0")
+    )['total'];
+
+    // Out of Stock Products
+    $outStock = mysqli_fetch_assoc(
+        mysqli_query($conn, "SELECT COUNT(*) AS total FROM products WHERE stock <= 0")
+    )['total'];
+
+    // Total Categories
+    $totalCategories = mysqli_fetch_assoc(
+        mysqli_query($conn, "SELECT COUNT(*) AS total FROM categories")
+    )['total'];
+
     if (!$result) {
         echo "Error:" . mysqli_error($conn);
     }
@@ -41,6 +62,45 @@ if (isset($_SESSION['admmin_id'])) {
             border-radius: 20px;
             padding: 25px;
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Total Products */
+        .stats-card {
+            border-radius: 18px;
+            padding: 20px;
+            color: white;
+            transition: .3s;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, .1);
+        }
+
+        .stats-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .bg-products {
+            background: linear-gradient(135deg, #a64703, #f8c7d6);
+        }
+
+        .bg-stock {
+            background: linear-gradient(135deg, #167239, #87c5bf);
+        }
+
+        .bg-out {
+            background: linear-gradient(135deg, #870425, #f8afa3);
+        }
+
+        .bg-category {
+            background: linear-gradient(135deg, #533a6e, #bed2f5);
+        }
+
+        .stats-number {
+            font-size: 30px;
+            font-weight: 700;
+        }
+
+        .stats-title {
+            font-size: 15px;
+            opacity: .9;
         }
 
         /* Header */
@@ -137,23 +197,64 @@ if (isset($_SESSION['admmin_id'])) {
 
                         <h3 class="page-title">Products</h3>
 
-                        <!-- <div class="input-group w-auto">
-                            <span class="input-group-text bg-white border-0 shadow-sm">
-                                <i class="fa fa-search text-muted"></i>
-                            </span>
-                            <input type="text" class="form-control search-box shadow-sm border-0"
-                                placeholder="Search Product...">
-                        </div> -->
+                    </div>
+                    <div class="row mb-4">
 
-                        <!-- <div class="d-flex gap-2">
-                            <button class="btn btn-light d-lg-none" data-bs-toggle="offcanvas"
-                                data-bs-target="#mobileMenu">
-                                <i class="fa fa-bars"></i>
-                            </button>
-                            <button class="btn btn-light shadow-sm">
-                                <i class="fa fa-user"></i>
-                            </button>
-                        </div> -->
+                        <div class="col-md-3 mb-3">
+                            <div class="stats-card bg-products">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <div class="stats-title">Total Products</div>
+                                        <div class="stats-number">
+                                            <?php echo $totalProducts; ?>
+                                        </div>
+                                    </div>
+                                    <i class="fa-solid fa-cake-candles fa-2x"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 mb-3">
+                            <div class="stats-card bg-stock">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <div class="stats-title">In Stock</div>
+                                        <div class="stats-number">
+                                            <?php echo $inStock; ?>
+                                        </div>
+                                    </div>
+                                    <i class="fa-solid fa-check-circle fa-2x"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 mb-3">
+                            <div class="stats-card bg-out">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <div class="stats-title">Out Of Stock</div>
+                                        <div class="stats-number">
+                                            <?php echo $outStock; ?>
+                                        </div>
+                                    </div>
+                                    <i class="fa-solid fa-triangle-exclamation fa-2x"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 mb-3">
+                            <div class="stats-card bg-category">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <div class="stats-title">Categories</div>
+                                        <div class="stats-number">
+                                            <?php echo $totalCategories; ?>
+                                        </div>
+                                    </div>
+                                    <i class="fa-solid fa-layer-group fa-2x"></i>
+                                </div>
+                            </div>
+                        </div>
 
                     </div>
 

@@ -5,6 +5,27 @@ session_start();
 $orderDetails = "SELECT orders.* FROM orders";
 $result = mysqli_query($conn, $orderDetails);
 
+
+// Count of orders
+// Total Orders
+$totalOrders = mysqli_fetch_assoc(
+    mysqli_query($conn, "SELECT COUNT(*) AS total FROM orders")
+)['total'];
+
+// New Orders (Pending)
+$newOrders = mysqli_fetch_assoc(
+    mysqli_query($conn, "SELECT COUNT(*) AS total FROM orders WHERE status  IN('Pending','Preparing','Shipped')")
+)['total'];
+
+// Delivered Orders
+$deliveredOrders = mysqli_fetch_assoc(
+    mysqli_query($conn, "SELECT COUNT(*) AS total FROM orders WHERE status='Deliverd'")
+)['total'];
+
+// Cancelled Orders
+$cancelledOrders = mysqli_fetch_assoc(
+    mysqli_query($conn, "SELECT COUNT(*) AS total FROM orders WHERE status='Canceled'")
+)['total'];
 ?>
 
 <!DOCTYPE html>
@@ -29,6 +50,44 @@ $result = mysqli_query($conn, $orderDetails);
             border-radius: 20px;
             padding: 25px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08)
+        }
+
+        .stat-card {
+            border-radius: 20px;
+            padding: 20px;
+            color: #fff;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            transition: .3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .bg-total {
+            background: linear-gradient(135deg, #8b56c3, #b8cef6);
+        }
+
+        .bg-new {
+            background: linear-gradient(135deg, #835a33, #cab497);
+        }
+
+        .bg-delivered {
+            background: linear-gradient(135deg, #4f7557, #aff8cb);
+        }
+
+        .bg-cancel {
+            background: linear-gradient(135deg, #f494ab, #ff4b2b);
+        }
+
+        .stat-number {
+            font-size: 30px;
+            font-weight: 700;
+        }
+
+        .stat-title {
+            font-size: 15px;
+            opacity: .9;
         }
 
         .search-box {
@@ -145,10 +204,63 @@ $result = mysqli_query($conn, $orderDetails);
                             </button>
                             <h3 class="mb-0">Order List</h3>
                         </div>
-                        <button class="btn btn-light rounded-circle"><i class="fa fa-user"></i></button>
+                        
                     </div>
 
-                    <!-- Filters -->
+                    <!-- Total Orders -->
+                    <div class="row mb-4">
+
+                        <div class="col-md-3 mb-3">
+                            <div class="stat-card bg-total">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <div class="stat-title">Total Orders</div>
+                                        <div class="stat-number"><?php echo $totalOrders; ?></div>
+                                    </div>
+                                    <i class="fa-solid fa-cart-shopping fa-2x"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 mb-3">
+                            <div class="stat-card bg-new">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <div class="stat-title">New Orders</div>
+                                        <div class="stat-number"><?php echo $newOrders; ?></div>
+                                    </div>
+                                    <i class="fa-solid fa-clock fa-2x"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 mb-3">
+                            <div class="stat-card bg-delivered">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <div class="stat-title">Delivered</div>
+                                        <div class="stat-number"><?php echo $deliveredOrders; ?></div>
+                                    </div>
+                                    <i class="fa-solid fa-check-circle fa-2x"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 mb-3">
+                            <div class="stat-card bg-cancel">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <div class="stat-title">Cancelled</div>
+                                        <div class="stat-number"><?php echo $cancelledOrders; ?></div>
+                                    </div>
+                                    <i class="fa-solid fa-xmark-circle fa-2x"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!--  -->
                     <div class=" d-flex justify-content-end gap-3">
                         <a href="add_status.php" class="btn btn-main text-light">
                             ➕ Add Status
@@ -157,6 +269,8 @@ $result = mysqli_query($conn, $orderDetails);
                             ➕ Add Payment Method
                         </a>
                     </div>
+
+
 
                     <!-- Table -->
                     <div class="table-responsive">

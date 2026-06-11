@@ -56,7 +56,8 @@ $row = mysqli_fetch_all($result, MYSQLI_ASSOC);
         /* Order Card */
         .order-box {
             background: #fff;
-            width: 50%;
+            width: 100%;
+            max-width: 1000px;
             border-radius: 15px;
             padding: 20px;
             border-left: 5px solid var(--primary);
@@ -273,8 +274,18 @@ $row = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
                             </div>
                             <?php } else {
-                            if ($value['status'] != "Preparing") {
+                            if ($value['status'] == "Pending") { ?>
+                                <a href="Form_action.php?product_id=<?php echo $value['product_id']; ?>&value=cancel">
 
+                                    <button type="button" class="p-2 bg-danger text-light fw-medium rounded-5 border-0">
+                                        Cancel Order
+                                    </button>
+
+                                </a>
+
+
+
+                                <?php } else {
                                 $updateStatus = $value['status'];
 
                                 if ($updateStatus == "cancel") { ?>
@@ -283,19 +294,10 @@ $row = mysqli_fetch_all($result, MYSQLI_ASSOC);
                                         Cancelled
                                     </span>
 
-                                <?php } else { ?>
+                            <?php }
+                            } ?>
 
-                                    <a href="Form_action.php?product_id=<?php echo $value['product_id']; ?>&value=cancel">
-
-                                        <button type="button" class="p-2 bg-danger text-light fw-medium rounded-5 border-0">
-                                            Cancel Order
-                                        </button>
-
-                                    </a>
-
-                                <?php } ?>
-
-                        <?php }
+                        <?php
                         } ?>
 
 

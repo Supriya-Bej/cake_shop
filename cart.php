@@ -293,7 +293,7 @@ $related_product_data = mysqli_fetch_all($relatedRun, MYSQLI_ASSOC);
                                 <div class="d-flex justify-content-center gap-3">
 
                                     <a href="product.php"
-                                        class="btn px-4 py-2 rounded-pill fw-semibold text-light" 
+                                        class="btn px-4 py-2 rounded-pill fw-semibold text-light"
                                         style="background-color:#ff4f81;">
 
                                         <i class="fa fa-bag-shopping"></i>
@@ -321,82 +321,86 @@ $related_product_data = mysqli_fetch_all($relatedRun, MYSQLI_ASSOC);
             <?php } ?>
 
             <!-- RIGHT SIDE SUMMARY -->
+            <?php if (!empty($data)) { ?>
+                <div class="col-lg-4">
 
-            <div class="col-lg-4">
+                    <div class="card shadow border-0 p-4 "
+                        style="top:90px; border-radius:20px;">
 
-                <div class="card shadow border-0 p-4 "
-                    style="top:90px; border-radius:20px;">
+                        <h4 class="fw-bold mb-4">
+                            Cart Summary
+                        </h4>
 
-                    <h4 class="fw-bold mb-4">
-                        Cart Summary
-                    </h4>
+                        <div class="d-flex justify-content-between mb-3">
 
-                    <div class="d-flex justify-content-between mb-3">
+                            <span>Total Items</span>
 
-                        <span>Total Items</span>
-
-                        <span class="fw-bold">
-                            <?php echo count($data); ?>
-                        </span>
-
-                    </div>
-
-                    <div class="d-flex justify-content-between mb-3">
-
-                        <span>Delivery</span>
-                        <?php if ($price > 500) { ?>
-                            <span class="text-success fw-bold">
-                                Free
+                            <span class="fw-bold">
+                                <?php echo count($data); ?>
                             </span>
-                        <?php } else { ?>
-                            <span class="text-success fw-bold">
-                                Delivery charge 55
-                            </span>
-                        <?php } ?>
 
-                    </div>
+                        </div>
 
-                    <hr>
+                        <div class="d-flex justify-content-between mb-3">
 
-                    <div class="d-flex justify-content-between mb-4">
+                            <span>Delivery</span>
+                            <?php if ($price > 500) { ?>
+                                <span class="text-success fw-bold">
+                                    Free
+                                </span>
+                            <?php } else { ?>
+                                <span class="text-success fw-bold">
+                                    Delivery charge 55
+                                </span>
+                            <?php } ?>
 
-                        <span class="fw-bold">Total Price</span>
+                        </div>
 
-                        <span class="fw-bold text-danger" id="totalPrice">
+                        <hr>
 
-                            ₹<?php
-                                $total = 0;
+                        <div class="d-flex justify-content-between mb-4">
 
-                                if ($value['stock'] > 0) {
-                                    foreach ($data as $item) {
-                                        $total += $item['price'] * $item['quantity'];
+                            <span class="fw-bold">Total Price</span>
+
+                            <span class="fw-bold text-danger" id="totalPrice">
+
+                                ₹<?php
+                                    $total = 0;
+
+                                    if ($value['stock'] > 0) {
+                                        foreach ($data as $item) {
+                                            $total += $item['price'] * $item['quantity'];
+                                        }
                                     }
-                                }
-                                echo $total;
-                                ?>
-                        </span>
+                                    echo $total;
+                                    ?>
+                            </span>
+                        </div>
+                        <?php $product_ids = implode(", ", $arr);  ?>
+
+                        <a href="user_order.php?product_ids=<?php echo $product_ids; ?>&price=<?php echo $total; ?>"
+                            class="btn btn-danger w-100 py-2 fw-semibold" style="border-radius:10px; text-decoration:none;">
+                            Proceed To Checkout
+                        </a>
+
+                        <p class="text-muted small mt-3 text-center mb-0">
+                            Free delivery on orders above ₹499
+                        </p>
                     </div>
-                    <?php $product_ids = implode(", ", $arr);  ?>
 
-                    <a href="user_order.php?product_ids=<?php echo $product_ids; ?>&price=<?php echo $total; ?>"
-                        class="btn btn-danger w-100 py-2 fw-semibold" style="border-radius:10px; text-decoration:none;">
-                        Proceed To Checkout
-                    </a>
-
-                    <p class="text-muted small mt-3 text-center mb-0">
-                        Free delivery on orders above ₹499
-                    </p>
                 </div>
+            <?php } ?>
 
-            </div>
 
         </div>
 
         <p id="notify_msg" class=" rounded-3 container "></p>
 
-        <div class="mt-5">
-            <h1 class="fw-semibold fs-4 text-warning">You can continue your shopping...</h1>
-        </div>
+        <?php if (!empty($data)) { ?>
+            <div class="mt-5">
+                <h1 class="fw-semibold fs-4 text-warning">You can continue your shopping...</h1>
+            </div>
+        <?php } ?>
         <div class="row mt-4 g-4" id="productList">
 
             <?php if (!empty($related_product_data)) {

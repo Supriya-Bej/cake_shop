@@ -20,8 +20,8 @@ include("header.php");
         .hero_img {
             height: 55vh;
             background:
-                linear-gradient(rgba(255, 77, 136, 0.7),
-                    rgba(255, 77, 136, 0.7)),
+                linear-gradient(rgba(132, 130, 130, 0.7),
+                    rgba(121, 109, 109, 0.7)),
                 url("Assests/image/Cake/about.jpg");
             background-size: cover;
             background-position: center;
@@ -186,16 +186,16 @@ include("header.php");
 
     <!-- Contact Us Page -->
     <!-- Contact Us Page -->
-    <section class="contact_section mt-5">
+    <section class="contact_section">
 
         <!-- Hero -->
-        <div class="hero_img d-flex flex-column align-items-center justify-content-center text-center">
+        <!-- <div class="hero_img d-flex flex-column align-items-center justify-content-center text-center">
             <h1 class="fw-bold text-white display-4">Contact Us</h1>
             <p class="w-50 text-white fw-medium">
                 We would love to hear from you. Connect with us anytime for orders,
                 support, or custom cake enquiries.
             </p>
-        </div>
+        </div> -->
 
         <!-- Wave -->
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">

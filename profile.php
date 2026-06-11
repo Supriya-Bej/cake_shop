@@ -1,7 +1,7 @@
 <?php
     include("db_connect.php");
     global $conn;
-    session_start();
+   include('header.php');
     if(!isset($_SESSION['user_id'])){
         header("Location:signup.php");
         exit();
@@ -62,13 +62,11 @@
 
 <body style="background-color: rgb(239, 210, 217);">
 
-<?php include('header.php'); ?>
+<?php  ?>
 
-<div class="container" style="margin-top: 40px; max-width:600px;">
+<div class="container" style="margin-top: 90px; max-width:600px;">
     
     <div class="card shadow p-4">
-        <!-- <h2 class="text-center mb-4">My Profile</h2> -->
-
         <form action="Form_action.php?user_id=<?php echo $user_id ?>" method="POST" enctype="multipart/form-data">
 
             <!-- Profile Image -->

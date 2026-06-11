@@ -271,6 +271,7 @@ $avg_rating = round($data['avg_rating'], 1);
         </a>
     </section>
 
+    <script src="Assests/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
